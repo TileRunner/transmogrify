@@ -1,12 +1,23 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
-  height: 40vmin;
+  height: 30vh;
   pointer-events: none;
 }
-
+.App-logo-small {
+  height: 15vh;
+  pointer-events: none;
+}
+.App-under-logo {
+  margin-top: 10vmin;
+  text-align: center;
+}
+.App-under-logo button {
+  font-size: calc(10px + 2vmin);
+  border: 3px solid whitesmoke;
+  background-color: #282c34;
+  color: whitesmoke;
+  border-radius: 15px;
+  padding: 2px 5px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -15,11 +26,11 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 50vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: white;
 }
