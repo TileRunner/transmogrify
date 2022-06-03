@@ -3,7 +3,10 @@ import { countSwaps, areAnagrams, isDrop, isWordValid, getTransmogrifyValidNextW
 
 const Transmogrify = ({setWhereTo}) => {
     const [numMoves, setNumMoves] = useState(2);
-    const baseurl = 'https://tilerunner.herokuapp.com';
+/* Due to heroku's security issue, they prevented my deploys to tilerunner.
+   They suggested using heroku CLI, so I followed instructions and it worked, but to a new url.
+*/
+    const baseurl = 'https://enigmatic-lake-42795.herokuapp.com'; //'https://tilerunner.herokuapp.com';
     const numMovesArray = [2,3,4,5,6,7,8,9];
     const [puzzle, setPuzzle] = useState({});
     const [nextWord, setNextWord] = useState('');
