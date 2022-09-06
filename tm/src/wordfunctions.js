@@ -1,4 +1,4 @@
-const baseurl = 'https://tilerunner.herokuapp.com';
+const baseurl = (process.env.NODE_ENV === 'production' ? 'https://webappscrabbleclub.azurewebsites.net/api/Values' : 'https://localhost:55557/api/Values');
 
 /**
  * Get the alphagram for the given word, trimmed and converted to lower case.
@@ -71,14 +71,14 @@ export function isDrop(longword="", shortword="") {
 /**
  * Determine whether a word is in the ENABLE2K lexicon, case insensitive
  * @param {string} word A word
- * @returns {Promise<bool>} Whether the word is in the ENABLE2K lexicon
+ * @returns {Promise<boolean>} Whether the word is in the ENABLE2K lexicon
  * @async
  */
-export async function isWordValid(word) {
-    let url = `${baseurl}/ENABLE2K?exists=${word.toLowerCase()}`;
+ export async function isWordValid(word) {
+    let url = `${baseurl}/ENABLE2K/exists?word=${word}`;
     const response = await fetch(url);
     const jdata = await response.json();
-    return jdata.exists;
+    return jdata.value;
 }
 
 /**
@@ -88,8 +88,8 @@ export async function isWordValid(word) {
  * @async
  */
 export async function getTransmogrifyValidNextWords(word) {
-    let url = `${baseurl}/ENABLE2K?letters=${word.toLowerCase()}&tm=true`;
+    let url = `${baseurl}/transmogrify/getvalidmoves?word=${word}`;
     const response = await fetch(url);
     const jdata = await response.json();
-    return jdata.to;
+    return jdata.value;
 }

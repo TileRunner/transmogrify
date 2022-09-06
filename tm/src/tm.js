@@ -3,10 +3,7 @@ import { countSwaps, areAnagrams, isDrop, isWordValid, getTransmogrifyValidNextW
 
 const Transmogrify = ({setWhereTo}) => {
     const [numMoves, setNumMoves] = useState(2);
-/* Due to heroku's security issue, they prevented my deploys to tilerunner.
-   They suggested using heroku CLI, so I followed instructions and it worked, but to a new url.
-*/
-    const baseurl = 'https://enigmatic-lake-42795.herokuapp.com'; //'https://tilerunner.herokuapp.com';
+    const baseurl = (process.env.NODE_ENV === 'production' ? 'https://webappscrabbleclub.azurewebsites.net/api/Values' : 'https://localhost:55557/api/Values');
     const numMovesArray = [2,3,4,5,6,7,8,9];
     const [puzzle, setPuzzle] = useState({});
     const [nextWord, setNextWord] = useState('');
@@ -22,17 +19,25 @@ const Transmogrify = ({setWhereTo}) => {
         let validUpWords = [];
         let newSolving = false;
         try {
-            let url = `${baseurl}/ENABLE2K?transmogrify=true&numMoves=${numMoves}`;
+            let url = `${baseurl}/transmogrify/generatepuzzle?minMoves=${numMoves}`;
             const response = await fetch(url);
             data = await response.json();
-            validDownWords = await getTransmogrifyValidNextWords(data.startWord);
-            validUpWords = await getTransmogrifyValidNextWords(data.targetWord);
-            newSolving = true;
+            if (data.value.fail) {
+                data.notes = ["The cat had a hairball!", data.value.fail];
+            } else {
+                validDownWords = await getTransmogrifyValidNextWords(data.value.startWord);
+                validUpWords = await getTransmogrifyValidNextWords(data.value.targetWord);
+                newSolving = true;    
+            }
         } catch (error) {
             data.notes = ["Problem with the server. Sorry about that."];
             console.log(error);
         }
-        setPuzzle(data);
+        if (data.notes) {
+            alert(data.notes);
+            return;
+        }
+        setPuzzle(data.value);
         setDownWords([]);
         setValidNextDownWords(validDownWords);
         setUpWords([]);
