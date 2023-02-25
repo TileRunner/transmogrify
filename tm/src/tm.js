@@ -143,7 +143,7 @@ const Transmogrify = ({setWhereTo}) => {
         <span>{puzzle.targetWord}</span>
         <br/>
         <span>Target:</span>
-        <span>{puzzle.numMoves}</span>
+        <span>{numMoves}</span>
         <span>moves</span>
     </div>;
     const SolutionSection = <div className="tm_solutionOuterDiv">
