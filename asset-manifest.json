@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/transmogrify/static/css/main.099162a3.css",
-    "main.js": "/transmogrify/static/js/main.d10b9cfa.js",
+    "main.js": "/transmogrify/static/js/main.e634ce5c.js",
     "static/media/transmogrify.jpg": "/transmogrify/static/media/transmogrify.2f6a091a141d54fd396e.jpg",
     "index.html": "/transmogrify/index.html",
     "main.099162a3.css.map": "/transmogrify/static/css/main.099162a3.css.map",
-    "main.d10b9cfa.js.map": "/transmogrify/static/js/main.d10b9cfa.js.map"
+    "main.e634ce5c.js.map": "/transmogrify/static/js/main.e634ce5c.js.map"
   },
   "entrypoints": [
     "static/css/main.099162a3.css",
-    "static/js/main.d10b9cfa.js"
+    "static/js/main.e634ce5c.js"
   ]
 }
