@@ -19,7 +19,7 @@ function App() {
             <tr className='App-under-logo'>
               <td>
               <a href="http://www.scrabbleplayers.org"><img border="0" src="http://www.scrabbleplayers.org/pix/logo-only-160px.png" alt="[NASPA Logo]"/></a>
-              <p>NWL20 lexicon used with permission from NASPA</p>
+              <p>NWL2023 lexicon used with permission from NASPA</p>
               </td>
               <td>
                 <p>An original word game by Tile Runner</p>
